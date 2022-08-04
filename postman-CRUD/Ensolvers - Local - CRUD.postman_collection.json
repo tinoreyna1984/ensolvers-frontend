@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "836a2c2d-faf3-4060-9167-2885ba34f47d",
+		"name": "Ensolvers - Local - CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4381878"
+	},
+	"item": [
+		{
+			"name": "Ensolvers - Local - Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tino\",\r\n    \"email\": \"tinoreyna1984@gmail.com\",\r\n    \"password\": \"Tr20010878\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/new",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"tinoreyna1984@gmail.com\",\r\n    \"password\": \"Tr20010878\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Revalidar token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ4NTUxMCwiZXhwIjoxNjU5NDkyNzEwfQ.Dg6j1_D6pjnqENsEQw96K3tdeFWFruEq3Vra_Xu2vT4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"tinoreyna1984@gmail.com\",\r\n    \"password\": \"Tr20010878\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/renew",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"renew"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - Crear nota",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ5NDgyNSwiZXhwIjoxNjU5NTAyMDI1fQ.BmnRULcm1z3IyIDVzYP8jI8VQyTwt8PMM_nEEL9p0jg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Tocar guitarra\",\r\n    \"content\": \"Tocar baladas en guitarra\",\r\n    \"categories\": [\"no-category\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/notes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - obtener notas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ5NDgyNSwiZXhwIjoxNjU5NTAyMDI1fQ.BmnRULcm1z3IyIDVzYP8jI8VQyTwt8PMM_nEEL9p0jg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/notes",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - obtener categorias",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTYwMjc2NCwiZXhwIjoxNjYwNDY2NzY0fQ.dBWU75K3ROc2LnjYzqY7SsWAtVsB4lYRV1CzZAaN7BM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/notes/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - obtener una nota",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/notes/62e94ee8562ddbe36220f289",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes",
+						"62e94ee8562ddbe36220f289"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - actualizar nota",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ5NDgyNSwiZXhwIjoxNjU5NTAyMDI1fQ.BmnRULcm1z3IyIDVzYP8jI8VQyTwt8PMM_nEEL9p0jg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Tocar guitarra\",\r\n    \"content\": \"Tocar baladas en guitarra\",\r\n    \"categories\": [\"musica\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/notes/62e9e61146d7c70f5a1056d8",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes",
+						"62e9e61146d7c70f5a1056d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - borrar nota",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/notes/62e955a8d6d5e2f6f9c9fb02",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes",
+						"62e955a8d6d5e2f6f9c9fb02"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - archivar nota",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Voy a salir con mi familia\",\r\n    \"content\": \"Me ire a pasear al centro comercial\",\r\n    \"archived\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/notes/62e95880a5a2a581dc00022b",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes",
+						"62e95880a5a2a581dc00022b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Local - Notes - obtener notas archivadas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/notes/archive",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"notes",
+						"archive"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

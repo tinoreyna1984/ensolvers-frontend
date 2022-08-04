@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "685fdcdf-26c2-4a9e-bc4a-aa618a622fcc",
+		"name": "Ensolvers - Remote - CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4381878"
+	},
+	"item": [
+		{
+			"name": "Ensolvers - Crear Usuario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Tino\",\r\n    \"email\": \"tinoreyna1984@gmail.com\",\r\n    \"password\": \"Tr20010878\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/auth/new",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ5NzM3MSwiZXhwIjoxNjYwMzYxMzcxfQ.ulWk_xqnQgFNgBbfJy3M60sAnefsU8tGxQ3iuG5u_KQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"tinoreyna1984@gmail.com\",\r\n    \"password\": \"Tr20010878\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/auth",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Revalidar token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ4NTUxMCwiZXhwIjoxNjU5NDkyNzEwfQ.Dg6j1_D6pjnqENsEQw96K3tdeFWFruEq3Vra_Xu2vT4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"tinoreyna1984@gmail.com\",\r\n    \"password\": \"Tr20010878\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/auth/renew",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"auth",
+						"renew"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - Crear nota",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmVhOGY0NmNjNzQ2ZDUzZWJhYTM3ZWUiLCJuYW1lIjoiVGVzdDAxIiwiaWF0IjoxNjU5NTg1MDQyLCJleHAiOjE2NjA0NDkwNDJ9.0aCPfhnEvbj8EwDwXU6XQ-mEVfyliPaNqJMt4B2S4gc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Revisar inventario de casa\",\r\n    \"content\": \"Revisar muebles, artefactos electrodomesticos, utileria, etc.\",\r\n    \"categories\": [\"no-category\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - obtener notas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ5NDgyNSwiZXhwIjoxNjU5NTAyMDI1fQ.BmnRULcm1z3IyIDVzYP8jI8VQyTwt8PMM_nEEL9p0jg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - obtener una nota",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes/62e94ee8562ddbe36220f289",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes",
+						"62e94ee8562ddbe36220f289"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - actualizar nota",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ5NDgyNSwiZXhwIjoxNjU5NTAyMDI1fQ.BmnRULcm1z3IyIDVzYP8jI8VQyTwt8PMM_nEEL9p0jg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Revisar la web\",\r\n    \"content\": \"Verificar contenidos\",\r\n    \"categories\": [\"web\", \"surfing\", \"navegar\"],\r\n    \"archived\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes/62e9e61146d7c70f5a1056d8",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes",
+						"62e9e61146d7c70f5a1056d8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - borrar nota",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes/62eb2cc29062513357012204",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes",
+						"62eb2cc29062513357012204"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - archivar nota",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Voy a salir con mi familia\",\r\n    \"content\": \"Me ire a pasear al centro comercial\",\r\n    \"archived\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes/62e95880a5a2a581dc00022b",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes",
+						"62e95880a5a2a581dc00022b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - obtener notas archivadas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTQ3ODEzNiwiZXhwIjoxNjU5NDg1MzM2fQ.0hGR5UfbnkDUXhAez_whEU42HRueNVbjVp41AWvmO-k",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes/archive",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes",
+						"archive"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ensolvers - Notes - obtener categorias",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU5YTA3NzlkMmY5ODc5MDhlZDk4NjUiLCJuYW1lIjoiVGlubyIsImlhdCI6MTY1OTYwMzQ2MiwiZXhwIjoxNjYwNDY3NDYyfQ.asGTPDrBrvOsWiVP9Sp6vPfKqc-3RTDFAfBb5ZroEmQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://ensolvers-backend.onrender.com/api/notes/categories",
+					"protocol": "https",
+					"host": [
+						"ensolvers-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"notes",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
