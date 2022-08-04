@@ -7,6 +7,7 @@ export const NotesList = ({ notes }) => {
 
   const notesFound = notes.length > 0;
   //console.log(notesFound);
+  //console.log(notes);
 
   return (
     <div className={className}>

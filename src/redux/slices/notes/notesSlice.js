@@ -6,6 +6,7 @@ export const notesSlice = createSlice({
     isLoadingNotes: true,
     notes: [],
     activeNote: null,
+    categories: [],
   },
   reducers: {
     onSetActiveNote: (state, { payload }) => {
@@ -60,6 +61,21 @@ export const notesSlice = createSlice({
         }
       });
     },
+    onLoadCategories: (state, { payload }) => {
+      state.categories = payload;
+      //console.log(payload)
+    },
+    onLoadNotesByCategory: (state, { payload }) => {
+      state.notes = [];
+      state.isLoadingNotes = true;
+      const {notes, category, user } = payload;
+      notes.forEach((note) => {
+        //console.log(category, note.categories);
+        if (note.categories.includes(category) && note.user._id === user.uid) {
+          state.notes.push(note);
+        }
+      });
+    },
     onLogoutNotes: (state) => {
       state.isLoadingNotes = true;
       state.notes = [];
@@ -75,5 +91,7 @@ export const {
     onDeleteNote,
     onLoadNotes,
     onLoadArchivedNotes,
+    onLoadCategories,
+    onLoadNotesByCategory,
     onLogoutNotes
  } = notesSlice.actions;

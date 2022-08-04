@@ -2,10 +2,13 @@ import React from "react";
 import { useUiStore } from "../../hooks/useUiStore";
 import { useNotesStore } from "../../hooks/useNotesStore";
 import { useAuthStore } from "../../hooks/useAuthStore";
+import { tzToUtc } from "../../helpers/tzToUtc";
 
 export const Note = ({ note }) => {
   const { openNoteModal } = useUiStore();
   const { setActiveNote, startArchiveNote, startDeleteNote } = useNotesStore();
+
+  //console.log(note.noteDate)
 
   const handleEdit = () => {
     openNoteModal();
@@ -65,7 +68,8 @@ export const Note = ({ note }) => {
           </button>
         )}
         <div className="card-footer">
-          Status: {note.archived ? "Archived" : "Active"}
+          Last time:{" "}
+          {tzToUtc(note.noteDate)}
         </div>
       </div>
     </li>

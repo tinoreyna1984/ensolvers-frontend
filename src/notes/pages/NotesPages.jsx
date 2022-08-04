@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNotesStore } from "../../hooks/useNotesStore";
 import { useAuthStore } from "../../hooks/useAuthStore";
 import { LogoutButton } from "../components/LogoutButton";
@@ -8,15 +8,18 @@ import { AddNoteButton } from "../components/AddNoteButton";
 import { NoteModal } from "../components/NoteModal";
 
 export const NotesPages = () => {
-  const { notes, startLoadingNotes, startLoadingArchivedNotes } =
-    useNotesStore();
+  const {
+    notes,
+    categories,
+    startLoadingNotes,
+    startLoadingArchivedNotes,
+    startLoadingNotesByCategory,
+  } = useNotesStore();
   const { user } = useAuthStore();
   const notesStatus = localStorage.getItem("notes-status") || "active";
 
-  //console.log(user.uid)
-
-  useEffect( () => {
-    async function loadNotes(){
+  useEffect(() => {
+    async function loadNotes() {
       if (notesStatus === "active") {
         startLoadingNotes(user.uid);
       } else {
@@ -25,6 +28,27 @@ export const NotesPages = () => {
     }
     loadNotes();
   }, []);
+
+  const [cat, setCat] = useState("all");
+  const catOpts = categories.map((cat) => ({ label: cat.nombre, value: cat.nombre })) || ["no-category"];
+  catOpts.push({ label: "all", value: "all" });
+  //console.log(catOpts);
+
+  //console.log(localNotes)
+
+  const handleCategoryChange = (e) => {
+    setCat(e.target.value);
+    //console.log(e.target.value);
+    if(e.target.value === "all"){
+      if (notesStatus === "active") {
+        startLoadingNotes(user.uid);
+      } else {
+        startLoadingArchivedNotes(user.uid);
+      }
+      return;
+    }
+    startLoadingNotesByCategory(e.target.value);
+  };
 
   const [value, setValue] = useState(notesStatus);
   const options = [
@@ -44,7 +68,10 @@ export const NotesPages = () => {
   };
 
   return (
-    <div id="notes" className="container-flex border border-gray rounded p-4 shadow">
+    <div
+      id="notes"
+      className="container-flex border border-gray rounded p-4 shadow"
+    >
       <h1>Hello, {user.name}</h1>
       <h1>Your notes</h1>
 
@@ -54,13 +81,19 @@ export const NotesPages = () => {
         value={value}
         onChange={handleChange}
       />
-      {(notesStatus === "active") && <AddNoteButton />}
-      {(notesStatus === "active") && <NoteModal />}
+      {notesStatus === "active" &&
+        <Dropdown
+          label="Check by category: "
+          options={catOpts}
+          value={cat}
+          onChange={handleCategoryChange}
+        />
+      }
+      {notesStatus === "active" && <AddNoteButton />}
+      {notesStatus === "active" && <NoteModal />}
       <LogoutButton />
 
       <NotesList notes={notes} />
-
-      
     </div>
   );
 };

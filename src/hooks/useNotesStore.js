@@ -8,12 +8,14 @@ import {
   onLoadArchivedNotes,
   onLoadNotes,
   onSetActiveNote,
+  onLoadCategories,
+  onLoadNotesByCategory,
 } from "../redux/slices/notes/notesSlice";
 
 export const useNotesStore = () => {
   const dispatch = useDispatch();
 
-  const { notes, activeNote } = useSelector((state) => state.notes);
+  const { notes, categories, activeNote } = useSelector((state) => state.notes);
   const { user } = useSelector((state) => state.auth);
 
   const setActiveNote = (note) => {
@@ -41,27 +43,23 @@ export const useNotesStore = () => {
     try {
       /* await notesApi.delete(`/notes/${note.id}`);
       dispatch(onDeleteNote(note)); */
-      Swal.fire(
-        {
-          title: 'Delete a note',
-          html: 'Are you sure you want to delete this note?',
-          showConfirmButton: true,
-          showCancelButton: true,
-          confirmButtonText: "Delete",
-          cancelButtonText: "Cancel",
-          icon: 'warning'
-        },)
-        .then(async (result) => {
-          if (result.isConfirmed) {
-              Swal.fire('Note deleted', '', 'success');
-              await notesApi.delete(`/notes/${note.id}`);
-              dispatch(onDeleteNote(note));
-              console.log('Deleted');
-          } else
-              Swal.fire('Note not deleted', '', 'success');
-              console.log('Not deleted');
+      Swal.fire({
+        title: "Delete a note",
+        html: "Are you sure you want to delete this note?",
+        showConfirmButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel",
+        icon: "warning",
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Note deleted", "", "success");
+          await notesApi.delete(`/notes/${note.id}`);
+          dispatch(onDeleteNote(note));
+          console.log("Deleted");
+        } else Swal.fire("Note not deleted", "", "success");
+        console.log("Not deleted");
       });
-      
     } catch (error) {
       console.log(error);
       Swal.fire("Error on deleting note", error.response.data.msg, "error");
@@ -73,8 +71,11 @@ export const useNotesStore = () => {
       await notesApi.put(`/notes/${note.id}`, { ...note, archived: archive });
       dispatch(onUpdateNote({ ...note, user }));
       if (archive === true) {
-        Swal.fire("Note archived successfully", "Click OK to close", "success")
-        .then(() => {
+        Swal.fire(
+          "Note archived successfully",
+          "Click OK to close",
+          "success"
+        ).then(() => {
           startLoadingNotes(user.uid);
         });
       } else {
@@ -82,8 +83,7 @@ export const useNotesStore = () => {
           "Note unarchived successfully",
           "Click OK to close",
           "success"
-        )
-        .then(() => {
+        ).then(() => {
           startLoadingArchivedNotes(user.uid);
         });
       }
@@ -103,7 +103,7 @@ export const useNotesStore = () => {
       const { data } = await notesApi.get("/notes");
       //console.log(data.notes);
       const { notes } = data;
-      dispatch(onLoadNotes({notes, uid}));
+      dispatch(onLoadNotes({ notes, uid }));
     } catch (error) {
       console.log(error);
     }
@@ -114,7 +114,31 @@ export const useNotesStore = () => {
       const { data } = await notesApi.get("/notes/archive");
       //console.log(data.notes);
       const { notes } = data;
-      dispatch(onLoadArchivedNotes({notes, uid}));
+      dispatch(onLoadArchivedNotes({ notes, uid }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const startLoadingCategories = async () => {
+    try {
+      const { data } = await notesApi.get("/notes/categories");
+      //console.log(data.categories);
+      const { categories } = data;
+      dispatch(onLoadCategories( categories ));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const startLoadingNotesByCategory = async (category) => {
+    /* startLoadingNotes(user.uid);
+    dispatch(onLoadNotesByCategory( {notes, category} )); */
+    try {
+      const { data } = await notesApi.get("/notes");
+      //console.log(data.notes);
+      const { notes } = data;
+      dispatch(onLoadNotesByCategory( {notes, category, user} ));
     } catch (error) {
       console.log(error);
     }
@@ -122,6 +146,7 @@ export const useNotesStore = () => {
 
   return {
     notes,
+    categories,
     activeNote,
     setActiveNote,
     startSavingNote,
@@ -129,5 +154,7 @@ export const useNotesStore = () => {
     startArchiveNote,
     startLoadingNotes,
     startLoadingArchivedNotes,
+    startLoadingCategories,
+    startLoadingNotesByCategory,
   };
 };

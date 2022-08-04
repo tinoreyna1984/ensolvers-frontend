@@ -4,13 +4,20 @@ import { LoginPage } from "../auth/pages/LoginPage";
 import { useAuthStore } from "../hooks/useAuthStore";
 import { SpinnerRoundOutlined } from 'spinners-react'
 import { NotesPages } from "../notes/pages/NotesPages";
+import { useNotesStore } from "../hooks/useNotesStore";
 
 export const AppRouter = () => {
 
   const { status, checkAuthToken } = useAuthStore();
+  const {
+    categories,
+    startLoadingCategories,
+  } = useNotesStore();
 
   useEffect(() => {
     checkAuthToken();
+    //if(categories)
+      startLoadingCategories();
   }, []);
 
   //console.log(status);

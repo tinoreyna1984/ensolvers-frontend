@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import { useUiStore } from "../../hooks/useUiStore";
 import { useNotesStore } from "../../hooks/useNotesStore";
 import { useEffect, useState } from "react";
+import { tzToUtc } from "../../helpers/tzToUtc";
 
 const customStyles = {
   content: {
@@ -27,8 +28,11 @@ export const NoteModal = () => {
 
   const [newCategory, setNewCategory] = useState("");
 
+  let today = new Date();
+
   //const { title, content, categories } = activeNote || {};
   //console.log({ title, content, categories });
+  //console.log(activeNote); // noteDate
 
   useEffect(() => {
     if (activeNote !== null) setFormValues({ ...activeNote });
@@ -78,6 +82,10 @@ export const NoteModal = () => {
 
   const onSubmit = async () => {
     //console.log("onSubmit");
+    setFormValues({
+        ...formValues,
+        noteDate: tzToUtc(today),
+      });
     startSavingNote(formValues);
     closeNoteModal();
   };
