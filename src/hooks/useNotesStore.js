@@ -32,6 +32,7 @@ export const useNotesStore = () => {
         //console.log(response);
         dispatch(onAddNewNote({ ...note, id: data.note.id, user }));
       }
+      await startLoadingCategories();
     } catch (error) {
       console.log(error);
       Swal.fire("Error on saving note", error.response.data.msg, "error");
@@ -56,9 +57,9 @@ export const useNotesStore = () => {
           Swal.fire("Note deleted", "", "success");
           await notesApi.delete(`/notes/${note.id}`);
           dispatch(onDeleteNote(note));
-          console.log("Deleted");
+          //console.log("Deleted");
         } else Swal.fire("Note not deleted", "", "success");
-        console.log("Not deleted");
+        //console.log("Not deleted");
       });
     } catch (error) {
       console.log(error);

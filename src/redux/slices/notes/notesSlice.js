@@ -14,6 +14,7 @@ export const notesSlice = createSlice({
       state.activeNote = payload;
     },
     onAddNewNote: (state, { payload }) => {
+      console.log(payload);
       state.notes.push(payload);
       state.activeNote = null;
     },
