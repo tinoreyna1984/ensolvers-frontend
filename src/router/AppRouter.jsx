@@ -22,6 +22,7 @@ export const AppRouter = () => {
 
   //console.log(status);
 
+  if (status === "checking") startLoadingCategories(); // force loading categories
   if (status === "checking") return <SpinnerRoundOutlined color='blue' size="75%" />;
 
   return (
