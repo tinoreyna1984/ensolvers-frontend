@@ -1,14 +1,17 @@
 import React from "react";
 import { useUiStore } from "../../hooks/useUiStore";
 import { useNotesStore } from "../../hooks/useNotesStore";
-import { useAuthStore } from "../../hooks/useAuthStore";
 import { tzToUtc } from "../../helpers/tzToUtc";
 
 export const Note = ({ note }) => {
   const { openNoteModal } = useUiStore();
   const { setActiveNote, startArchiveNote, startDeleteNote } = useNotesStore();
 
-  //console.log(note.noteDate)
+  const arrayToStringTags = (arr) => {
+    let withCommaAndSpace = arr.join(', ');
+    return withCommaAndSpace;
+  }
+  //console.log(arrayToStringTags(note.categories));
 
   const handleEdit = () => {
     openNoteModal();
@@ -68,8 +71,13 @@ export const Note = ({ note }) => {
           </button>
         )}
         <div className="card-footer">
-          Last time:{" "}
+          <p>
+            Categories: {arrayToStringTags(note.categories)}
+          </p>
+          <p>
+            Last time:{" "}
           {tzToUtc(note.noteDate)}
+          </p>
         </div>
       </div>
     </li>
