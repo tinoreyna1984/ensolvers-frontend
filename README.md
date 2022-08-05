@@ -1,6 +1,4 @@
-# githubtinoreyna1984-ensolvers-challenge
-
-## Ensolvers Challenge
+## Note App
 Author: Tino Reyna (tinoreyna1984@gmail.com, GitHub: tinoreyna1984)
 
 ### Description
@@ -39,10 +37,6 @@ Finished
 ### Live demo links
 App: https://notes-app-tinoreyna1984.onrender.com/
 API: https://ensolvers-backend.onrender.com/
-
-### Test user credentials
-Email: tinoreyna1984@gmail.com
-Pass: ##########
 
 ### Additional resources
 * Two Postman files are included in the repository: one for the backend and another one for the frontend.
